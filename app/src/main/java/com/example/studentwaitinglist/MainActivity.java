@@ -181,6 +181,8 @@ public class MainActivity extends AppCompatActivity {
         alertDialogBuilderUserInput.setView(view);
 
         final EditText inputNote = view.findViewById(R.id.note);
+        final EditText student_priority = view.findViewById(R.id.student_priority);
+        final EditText course = view.findViewById(R.id.course);
         TextView dialogTitle = view.findViewById(R.id.dialog_title);
         dialogTitle.setText(!shouldUpdate ? getString(R.string.lbl_new_note_title) : getString(R.string.lbl_edit_note_title));
 
@@ -221,14 +223,11 @@ public class MainActivity extends AppCompatActivity {
                     updateNote(inputNote.getText().toString(), position);
                 } else {
                     // create new note
-                    // need to also get StudentID, priority and class
-                    // using tmp for now
-                    //String studentID = "107849";
-                    int priority = 3;
-                    String course = "CSIT 435";
+                    //parse priority string to int
+                    String x = student_priority.getText().toString();
+                    int student_priority = Integer.parseInt(x);
 
-
-                    createNote(inputNote.getText().toString(), course, priority);
+                    createNote(inputNote.getText().toString(), course.getText().toString(), student_priority);
                 }
             }
         });

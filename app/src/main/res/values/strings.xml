@@ -5,5 +5,7 @@
     <string name="msg_no_notes">No Students found!</string>
     <string name="lbl_new_note_title">Add New Student</string>
     <string name="lbl_edit_note_title">Edit Student</string>
-    <string name="hint_enter_note">Enter your Student!</string>
+    <string name="hint_enter_note">Enter your Name!</string>
+    <string name="enter_priority">priority(senior - 4, junior - 3, \n sophomore -2, freshman 1)!</string>
+    <string name="enter_course">Enter Course</string>
 </resources>
