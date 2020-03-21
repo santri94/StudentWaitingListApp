@@ -91,10 +91,10 @@ public class MainActivity extends AppCompatActivity {
      * Inserting new note in db
      * and refreshing the list
      */
-    private void createNote(String note) {
+    private void createNote(String name, String course, int priority) {
         // inserting note in db and getting
         // newly inserted note id
-        long id = db.insertNote(note);
+        long id = db.insertNote(name, course, priority);
 
         // get the newly inserted note from db
         Note n = db.getNote(id);
@@ -114,10 +114,10 @@ public class MainActivity extends AppCompatActivity {
      * Updating note in db and updating
      * item in the list by its position
      */
-    private void updateNote(String note, int position) {
+    private void updateNote(String name, int position) {
         Note n = notesList.get(position);
         // updating note text
-        n.setNote(note);
+        n.setName(name);
 
         // updating note in db
         db.updateNote(n);
@@ -185,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
         dialogTitle.setText(!shouldUpdate ? getString(R.string.lbl_new_note_title) : getString(R.string.lbl_edit_note_title));
 
         if (shouldUpdate && note != null) {
-            inputNote.setText(note.getNote());
+            inputNote.setText(note.getStudent());
         }
         alertDialogBuilderUserInput
                 .setCancelable(false)
@@ -221,7 +221,14 @@ public class MainActivity extends AppCompatActivity {
                     updateNote(inputNote.getText().toString(), position);
                 } else {
                     // create new note
-                    createNote(inputNote.getText().toString());
+                    // need to also get StudentID, priority and class
+                    // using tmp for now
+                    //String studentID = "107849";
+                    int priority = 3;
+                    String course = "CSIT 435";
+
+
+                    createNote(inputNote.getText().toString(), course, priority);
                 }
             }
         });
